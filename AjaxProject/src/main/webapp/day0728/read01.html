@@ -45,6 +45,34 @@
 				}
 			});
 		});
+		
+		
+		
+		$("#btn2").click(function(){
+			$("#result").empty();
+			
+			//json 읽기
+			$.ajax({
+				type:"get",
+				url:"data1.json",
+				dataType:"json",
+				success:function(data){
+					var s="";
+					s+= "이름: " + data.name + "<br>";
+					s+= "주소: " + data.addr + "<br>";
+					s+= "점수: " + data.score + "<br>";
+					
+					$("#result").append(s);
+				},
+				statusCode:{
+					404:function(){
+						alert("json파일을 찾을 수 없습니다");
+					},500:function(){
+						alert("서버오류...코드 다시 보기");
+					}
+				}
+			});
+		});
 	</script>
 </body>
 
