@@ -42,7 +42,7 @@
 		<td><%=dto.getName()%></td>
 		<td><%=dto.getAddr()%></td>
 		<td><%=dto.getSdate()%></td>
-		<td><button type="button" class="btn btn-info btn-sm" onclick="location.href=''">수정</button>
+		<td><button type="button" class="btn btn-info btn-sm" onclick="location.href='updateForm.jsp?num=<%=dto.getNum()%>'">수정</button>
 		<%--멤버값을 받는 방법 --%>
 		<button type="button" class="btn btn-danger btn-sm" onclick="location.href='delete.jsp?num=<%=dto.getNum()%>'">삭제</button></td>
 		</tr>
