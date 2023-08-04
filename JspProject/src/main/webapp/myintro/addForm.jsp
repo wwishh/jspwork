@@ -38,9 +38,9 @@
 						<option value="010">010</option>
 						<option value="011">011</option>
 						<option value="019">019</option>
-				</select> <input type="text" name="hp2" width="120" required=required
+				</select> <input type="text" name="hp2" width="60" required=required
 					placeholder="전화번호 가운데 4자리">-<input type="text" name="hp3"
-					width="120" required=required placeholder="전화번호 끝 4자리"></td>
+					width="60" required=required placeholder="전화번호 끝 4자리"></td>
 			</tr>
 
 			<tr>

@@ -39,7 +39,7 @@ public class IntroDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select * from intro order by intro_num";
+		String sql = "select * from intro";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -51,7 +51,7 @@ public class IntroDao {
 				dto.setIntro_blood(rs.getString("intro_blood"));
 				dto.setIntro_hp(rs.getString("intro_hp"));
 				dto.setIntro_city(rs.getString("intro_city"));
-				dto.setGaipday(rs.getTimestamp("intro_gaipday"));
+				dto.setGaipday(rs.getTimestamp("gaipday"));
 				
 				list.add(dto);
 				

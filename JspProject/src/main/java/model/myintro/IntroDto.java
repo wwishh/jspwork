@@ -8,7 +8,7 @@ public class IntroDto {
 	private String intro_blood;
 	private String intro_hp;
 	private String intro_city;
-	private Timestamp gaipday;
+	private Timestamp gaipday;                              
 	
 	
 	public String getIntro_num() {

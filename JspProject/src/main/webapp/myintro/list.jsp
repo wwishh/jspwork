@@ -26,7 +26,7 @@
 <body>
 
 <body>
-<button type="button" onclick="location='addForm.jsp'" class="btn btn-outline-info">상품추가</button><br>
+<button type="button" onclick="location='addForm.jsp'" class="btn btn-outline-info">데이터추가</button><br>
 	<br>
 	<table class="table table-bordered" style="width:800px;">
 	<tr align="center" class="table-warning">
@@ -60,8 +60,8 @@
 		
 		<tr>
 		<td align="center" valign="middle"><%=(i+1)%></td>
-		<td align="center" valign="middle"><a href="detailpage.jsp?no=<%=dto.getIntro_name()%>"></a></td>
-		<td align="center"><%=dto.getIntro_hp()%></td>
+		<td align="center" valign="middle"><%=dto.getIntro_name()%></td>
+		<td align="center"><%=dto.getIntro_blood()%></td>
 		<td align="center" valign="middle"><%=dto.getIntro_hp()%></td>
 		<td align="center" valign="middle"><%=dto.getIntro_city()%></td>
 		<td align="center" valign="middle"><%=sdf.format(dto.getGaipday())%></td>
