@@ -23,6 +23,7 @@
 	String photo = request.getParameter("photo");
 	String price = request.getParameter("price");
 	String ipgoday = request.getParameter("ipgoday");
+	String no = request.getParameter("no");
 	
 	MallDto dto = new MallDto();
 	
@@ -30,9 +31,10 @@
 	dto.setPhoto(photo);
 	dto.setPrice(price);
 	dto.setIpgoday(ipgoday);
+	dto.setNo(no);
 	
 	MallDao dao = new MallDao();
-	dao.insertMyMall(dto);
+	dao.updateMyMall(dto);
 	
 	response.sendRedirect("list.jsp");
 	

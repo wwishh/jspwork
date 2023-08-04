@@ -1,6 +1,4 @@
 <%@page import="model.mymall.MallDao"%>
-<%@page import="model.mymall.MallDto"%>
-<%@page import="java.sql.Timestamp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -18,24 +16,11 @@
 </head>
 <body>
 	<%
-	request.setCharacterEncoding("utf-8");
-	String sangpum = request.getParameter("sangpum");
-	String photo = request.getParameter("photo");
-	String price = request.getParameter("price");
-	String ipgoday = request.getParameter("ipgoday");
-	
-	MallDto dto = new MallDto();
-	
-	dto.setSangpum(sangpum);
-	dto.setPhoto(photo);
-	dto.setPrice(price);
-	dto.setIpgoday(ipgoday);
-	
-	MallDao dao = new MallDao();
-	dao.insertMyMall(dto);
-	
-	response.sendRedirect("list.jsp");
-	
+		String no = request.getParameter("no");
+		MallDao dao = new MallDao();
+		dao.deleteMyMall(no);
+		
+		response.sendRedirect("list.jsp");
 	%>
 </body>
 </html>

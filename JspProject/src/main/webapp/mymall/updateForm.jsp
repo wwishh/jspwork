@@ -1,3 +1,5 @@
+<%@page import="model.mymall.MallDao"%>
+<%@page import="model.mymall.MallDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -35,41 +37,55 @@
 	})
 </script>
 </head>
+
+<%
+String no = request.getParameter("no");
+MallDao dao = new MallDao();
+MallDto dto = dao.getData(no);
+%>
 <body>
-	<form action="addAction.jsp" method="post">
+	<form action="updateAction.jsp" method="post">
+		<input type="hidden" name="no" value="<%=no%>">
+
 		<table class="table table-bordered" style="width: 300px;">
 			<tr>
 				<th>상품명</th>
 				<td><input type="text" name="sangpum" width="120"
-					required=required placeholder="상품명" class="form-control"></td>
+					required=required placeholder="상품명"
+					value="<%=dto.getSangpum()%>"></td>
 			</tr>
 
 			<tr>
 				<th>상품사진</th>
 				<td><select name="photo" id="photo">
-						<option value="../쇼핑몰사진/1.jpg">자켓</option>
-						<option value="../쇼핑몰사진/2.jpg">코트</option>
-						<option value="../쇼핑몰사진/3.jpg">니트</option>
-						<option value="../쇼핑몰사진/4.jpg">바지</option>
-						<option value="../쇼핑몰사진/5.jpg">상의</option>
+						<option value="../쇼핑몰사진/1.jpg"
+						<%=dto.getPhoto().equals("../쇼핑몰사진/1.jpg")?"selected":"" %>>자켓</option>
+						<option value="../쇼핑몰사진/2.jpg"
+						<%=dto.getPhoto().equals("../쇼핑몰사진/2.jpg")?"selected":"" %>>코트</option>
+						<option value="../쇼핑몰사진/3.jpg"
+						<%=dto.getPhoto().equals("../쇼핑몰사진/3.jpg")?"selected":"" %>>니트</option>
+						<option value="../쇼핑몰사진/4.jpg"
+						<%=dto.getPhoto().equals("../쇼핑몰사진/4.jpg")?"selected":"" %>>바지</option>
+						<option value="../쇼핑몰사진/5.jpg"
+						<%=dto.getPhoto().equals("../쇼핑몰사진/5.jpg")?"selected":"" %>>상의</option>
 				</select></td>
 			</tr>
 
 			<tr>
 				<th>가격</th>
 				<td><input type="text" name="price" width="120"
-					required=required placeholder="가격"></td>
+					required=required placeholder="가격" value="<%=dto.getPrice()%>"></td>
 			</tr>
 
 			<tr>
 				<th>입고날짜</th>
 				<td><input type="date" name="ipgoday" width="120"
-					required=required></td>
+					required=required value="<%=dto.getIpgoday()%>"></td>
 			</tr>
 
 			<tr>
 				<td colspan="2" align=center>
-					<button type="submit">전송</button>
+					<button type="submit">수정</button>
 					<button type="button" onclick="location.href='list.jsp'">목록</button>
 				</td>
 			</tr>

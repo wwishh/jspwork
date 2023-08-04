@@ -1,8 +1,7 @@
-<%@page import="java.text.NumberFormat"%>
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="model.mymall.MallDto"%>
+<%@page import="model.myintro.IntroDto"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="model.mymall.MallDao"%>
+<%@page import="model.myintro.IntroDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -20,23 +19,23 @@
 </head>
 
 <%
-	MallDao dao = new MallDao();
-	ArrayList<MallDto> list = dao.selectMyMall();
+	IntroDao dao = new IntroDao();
+	ArrayList<IntroDto> list = dao.selectMyIntro();
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-	NumberFormat nf = NumberFormat.getCurrencyInstance();
-
 %>
+<body>
+
 <body>
 <button type="button" onclick="location='addForm.jsp'" class="btn btn-outline-info">상품추가</button><br>
 	<br>
 	<table class="table table-bordered" style="width:800px;">
 	<tr align="center" class="table-warning">
 	<th width="60">번호</th>
-	<th width="140">상품명</th>
-	<th width="120">상품사진</th>
-	<th width="100">가격</th>
-	<th width="200">입고일</th>
-	<th width="200">등록일</th>
+	<th width="140">이름</th>
+	<th width="120">혈액형</th>
+	<th width="100">전화번호</th>
+	<th width="200">지역</th>
+	<th width="200">가입날짜</th>
 	<th width="160">수정|삭제</th>
 	</tr>
 	
@@ -46,7 +45,7 @@
 	%>
 	<tr>
 	<td colspan="6" align="center">
-	<h5>등록된 상품이 없습니다</h5>
+	<h5>등록된 정보가 없습니다</h5>
 	</td>
 	</tr>
 	
@@ -56,18 +55,18 @@
 	
 
 	for(int i=0; i<list.size();i++){
-		MallDto dto = list.get(i);
+		IntroDto dto = list.get(i);
 		%>
 		
 		<tr>
 		<td align="center" valign="middle"><%=(i+1)%></td>
-		<td align="center" valign="middle"><%=dto.getSangpum()%></td>
-		<td align="center"><a href="detailpage.jsp?no=<%=dto.getNo()%>"><img src='<%=dto.getPhoto()%>' width="100"></a></td>
-		<td align="center" valign="middle"><%=dto.getPrice()%></td>
-		<td align="center" valign="middle"><%=dto.getIpgoday()%></td>
-		<td align="center" valign="middle"><%=sdf.format(dto.getWriteday())%></td>
-		<td valign="middle"><button type="button" class="btn btn-outline-info btn-sm" onclick="location.href='updateForm.jsp?no=<%=dto.getNo()%>'">수정</button>
-		<button type="button" class="btn btn-outline-danger btn-sm" onclick="dd(<%=dto.getNo()%>)">삭제</button></td>
+		<td align="center" valign="middle"><a href="detailpage.jsp?no=<%=dto.getIntro_name()%>"></a></td>
+		<td align="center"><%=dto.getIntro_hp()%></td>
+		<td align="center" valign="middle"><%=dto.getIntro_hp()%></td>
+		<td align="center" valign="middle"><%=dto.getIntro_city()%></td>
+		<td align="center" valign="middle"><%=sdf.format(dto.getGaipday())%></td>
+		<td valign="middle"><button type="button" class="btn btn-outline-info btn-sm" onclick="location.href='updateForm.jsp?no=<%=dto.getIntro_num()%>'">수정</button>
+		<button type="button" class="btn btn-outline-danger btn-sm" onclick="dd(<%=dto.getIntro_num()%>)">삭제</button></td>
 		</tr>
 		
 	<%}
@@ -84,6 +83,6 @@
 		}
 	}
 	</script>
-	
+
 </body>
 </html>

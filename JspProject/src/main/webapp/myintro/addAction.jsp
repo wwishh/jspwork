@@ -1,6 +1,5 @@
-<%@page import="model.mymall.MallDao"%>
-<%@page import="model.mymall.MallDto"%>
-<%@page import="java.sql.Timestamp"%>
+<%@page import="model.myintro.IntroDto"%>
+<%@page import="model.myintro.IntroDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -19,23 +18,25 @@
 <body>
 	<%
 	request.setCharacterEncoding("utf-8");
-	String sangpum = request.getParameter("sangpum");
-	String photo = request.getParameter("photo");
-	String price = request.getParameter("price");
-	String ipgoday = request.getParameter("ipgoday");
-	
-	MallDto dto = new MallDto();
-	
-	dto.setSangpum(sangpum);
-	dto.setPhoto(photo);
-	dto.setPrice(price);
-	dto.setIpgoday(ipgoday);
-	
-	MallDao dao = new MallDao();
-	dao.insertMyMall(dto);
+
+	String name = request.getParameter("intro_name");
+	String blood = request.getParameter("intro_blood");
+	String hp = request.getParameter("hp1") + request.getParameter("hp2") + request.getParameter("hp3");
+	String city = request.getParameter("intro_city");
+
+	IntroDto dto = new IntroDto();
+
+	dto.setIntro_name(name);
+	dto.setIntro_blood(blood);
+	dto.setIntro_hp(hp);
+	dto.setIntro_city(city);
+
+	IntroDao dao = new IntroDao();
+
+	dao.insertMyIntro(dto);
 	
 	response.sendRedirect("list.jsp");
-	
 	%>
+
 </body>
 </html>
