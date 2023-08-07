@@ -15,7 +15,7 @@
 </head>
 <body>
 	<form action="addAction.jsp" method="post">
-		<table class="table table-bordered" style="width: 350px;">
+		<table class="table table-bordered" style="width: 400px;">
 			<tr>
 				<th>이름</th>
 				<td><input type="text" name="intro_name" width="120"
@@ -38,30 +38,38 @@
 						<option value="010">010</option>
 						<option value="011">011</option>
 						<option value="019">019</option>
-				</select> <input type="text" name="hp2" width="60" required=required
-					placeholder="전화번호 가운데 4자리">-<input type="text" name="hp3"
-					width="60" required=required placeholder="전화번호 끝 4자리"></td>
+				</select> <input type="text" name="hp2" style="width: 100px"
+					required=required placeholder="가운데 4자리" id="hpcenter"> - <input
+					type="text" name="hp3" style="width: 100px" required=required
+					placeholder="끝 4자리" id="hplast"></td>
 			</tr>
 
 			<tr>
 				<th>지역</th>
-				<td><input type="radio" name="intro_city" value="서울">서울
-				<input type="radio" name="intro_city" value="부산">부산
-				<input type="radio" name="intro_city" value="인천">인천
-				<input type="radio" name="intro_city" value="춘천">춘천
-				<input type="radio" name="intro_city" value="남양주">남양주
-				</td>
+				<td><input type="radio" name="intro_city" value="서울" checked>서울
+					<input type="radio" name="intro_city" value="부산">부산 <input
+					type="radio" name="intro_city" value="인천">인천 <input
+					type="radio" name="intro_city" value="춘천">춘천 <input
+					type="radio" name="intro_city" value="남양주">남양주</td>
 			</tr>
 
 			<tr>
 				<td colspan="2" align=center>
-					<button type="submit">전송</button>
-					<button type="button" onclick="location.href='list.jsp'">목록</button>
+					<button type="submit" class="btn btn-outline-info">전송</button>
+					<button type="button" class="btn btn-outline-info" onclick="location.href='list.jsp'">목록</button>
 				</td>
 			</tr>
 
 		</table>
 	</form>
 
+	<script>
+		$("#hpcenter").on("keyup", function() {
+			var length = $("#hpcenter").val().length;
+			if (length == 4) {
+				$("#hplast").focus();
+			}
+		});
+	</script>
 </body>
 </html>

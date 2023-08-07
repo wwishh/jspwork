@@ -35,7 +35,7 @@ NumberFormat nf = NumberFormat.getCurrencyInstance();
 <b>상품가격 <%=nf.format(Integer.parseInt(dto.getPrice()))%></b><br>
 <b>상품입고일 <%=dto.getIpgoday()%></b><br>
 
-<button type="button" onclick="history.back()" class="btn btn-ouline-info btn-lg">이전으로 가기</button>
+<button type="button" onclick="history.back()" class="btn btn-outline-info btn-lg">이전으로 가기</button>
 </div>
 </body>
 </html>

@@ -60,9 +60,9 @@
 		
 		<tr>
 		<td align="center" valign="middle"><%=(i+1)%></td>
-		<td align="center" valign="middle"><%=dto.getIntro_name()%></td>
-		<td align="center"><%=dto.getIntro_blood()%></td>
-		<td align="center" valign="middle"><%=dto.getIntro_hp()%></td>
+		<td align="center" valign="middle" style="cursor:pointer" onclick="location.href='detailpage.jsp?no=<%=dto.getIntro_num()%>'"><%=dto.getIntro_name()%></td>
+		<td align="center" valign="middle"><%=dto.getIntro_blood()%></td>
+		<td align="center" valign="middle" width="180"><%=dto.getIntro_hp()%></td>
 		<td align="center" valign="middle"><%=dto.getIntro_city()%></td>
 		<td align="center" valign="middle"><%=sdf.format(dto.getGaipday())%></td>
 		<td valign="middle"><button type="button" class="btn btn-outline-info btn-sm" onclick="location.href='updateForm.jsp?no=<%=dto.getIntro_num()%>'">수정</button>
@@ -79,7 +79,7 @@
 		var a = confirm("정말로 삭제하시겠습니까?");
 		
 		if(a){
-			location.href='malldelete.jsp?no=' + no;
+			location.href='introdelete.jsp?no=' + no;
 		}
 	}
 	</script>

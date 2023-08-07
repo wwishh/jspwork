@@ -19,6 +19,7 @@
 	<%
 	ServletContext context = getServletContext();
 	String realFolder = context.getRealPath("/save");
+	
 	System.out.println("업로드경로:"+realFolder);
 	
 	int fileSize = 1024*1024*5;

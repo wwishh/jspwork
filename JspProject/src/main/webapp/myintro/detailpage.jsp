@@ -1,3 +1,4 @@
+<%@page import="java.text.NumberFormat"%>
 <%@page import="model.myintro.IntroDto"%>
 <%@page import="model.myintro.IntroDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -15,28 +16,23 @@
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <title>Insert title here</title>
 </head>
+<%
+String no = request.getParameter("no");
+IntroDao dao = new IntroDao();
+IntroDto dto = dao.getData(no);
+NumberFormat nf = NumberFormat.getCurrencyInstance();
+%>
 <body>
-	<%
-	request.setCharacterEncoding("utf-8");
 
-	String name = request.getParameter("intro_name");
-	String blood = request.getParameter("intro_blood");
-	String hp = request.getParameter("hp1") + "-" + request.getParameter("hp2") + "-" + request.getParameter("hp3");
-	String city = request.getParameter("intro_city");
+<div style="margin:20px">
+<b><%=dto.getIntro_name()%>님의 자기소개</b><br>
+<b>이름 <%=dto.getIntro_name()%></b><br>
+<b>지역 <%=dto.getIntro_city()%></b><br>
+<b>이름 <%=dto.getIntro_hp()%></b><br>
+<b>이름 <%=dto.getIntro_blood()%></b><br>
+<b>이름 <%=dto.getGaipday()%></b><br><br>
 
-	IntroDto dto = new IntroDto();
-
-	dto.setIntro_name(name);
-	dto.setIntro_blood(blood);
-	dto.setIntro_hp(hp);
-	dto.setIntro_city(city);
-
-	IntroDao dao = new IntroDao();
-
-	dao.insertMyIntro(dto);
-	
-	response.sendRedirect("list.jsp");
-	%>
-
+<button type="button" onclick="history.back()" class="btn btn-outline-info">이전으로 가기</button>
+</div>
 </body>
 </html>

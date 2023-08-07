@@ -39,13 +39,14 @@ public class IntroDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select * from intro";
+		String sql = "select * from intro order by intro_num";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
-			IntroDto dto =new IntroDto();
+			
 			while(rs.next()) {
+				IntroDto dto =new IntroDto();
 				dto.setIntro_num(rs.getString("intro_num"));
 				dto.setIntro_name(rs.getString("intro_name"));
 				dto.setIntro_blood(rs.getString("intro_blood"));
@@ -64,5 +65,78 @@ public class IntroDao {
 		}
 		
 		return list;
+	}
+	
+	public void deleteMyIntro(String num) {
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		
+		String sql = "delete from intro where intro_num=?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, num);
+			pstmt.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(pstmt, conn);
+		}
+	}
+	
+	public IntroDto getData(String num) {
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		IntroDto dto = new IntroDto();
+		
+		String sql = "select * from intro where intro_num=?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, num);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				dto.setIntro_num(rs.getString("intro_num"));
+				dto.setIntro_name(rs.getString("intro_name"));
+				dto.setIntro_blood(rs.getString("intro_blood")); 
+				dto.setIntro_hp(rs.getString("intro_hp")); 
+				dto.setIntro_city(rs.getString("intro_city")); 
+				dto.setGaipday(rs.getTimestamp("gaipday")); 
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		
+		return dto;
+	}
+	
+	public void updateMyIntro(IntroDto dto) {
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		
+		String sql = "update intro set intro_name=?, intro_blood=?, intro_hp=?, intro_city=? where intro_num=?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getIntro_name());
+			pstmt.setString(2, dto.getIntro_blood());
+			pstmt.setString(3, dto.getIntro_hp());
+			pstmt.setString(4, dto.getIntro_city());
+			pstmt.setString(5, dto.getIntro_num());
+			pstmt.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(pstmt, conn);
+		}
 	}
 }
