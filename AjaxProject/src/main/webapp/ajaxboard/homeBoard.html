@@ -10,7 +10,7 @@
 	<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 	<title>Insert title here</title>
 	<style>
-		div.list, div.detailview{
+		div.list, div.detailview, div.updateform{
 			position: absolute;
 			left: 100px;
 			top: 100px;
@@ -26,7 +26,7 @@
 			cursor: pointer;
 		}
 		
-		div.list *, div.writeform *, div.detail *{
+		div.list *, div.writeform *, div.detail *, div.updateform *{
 			font-family: "Orbit";
 			font-size: 13pt;
 		}
@@ -35,6 +35,7 @@
 		$(function(){
 			list();
 			$("div.writeform").hide();
+			$("div.updateform").hide();
 			
 			$("#btnwrite").click(function(){
 				$("div.writeform").slideToggle('fast');
@@ -86,7 +87,7 @@
 							s+= "<tr><td align='right'>";
 							s+="<button type='button' class='btn btn-default' id='btn1'>글쓰기</button>";
 							s+="<button type='button' class='btn btn-default' id='btn2'>목록</button>";
-							s+="<button type='button' class='btn btn-default' id='btn3'>수정</button>";
+							s+="<button type='button' class='btn btn-default' id='btn3' num='" + data.num + "'>수정</button>";
 							s+="<button type='button' class='btn btn-default' id='btn4' num='" + data.num + "'>삭제</button>";
 							s+="</td></tr></table>";
 							
@@ -114,6 +115,32 @@
 				$("div.list").show();
 			});
 			
+			$(document).on("click","#btn3", function(){
+				var num = $(this).attr("num");
+				//alert(num);
+				
+				//상세보기에서 사용하던 detailBoard.jsp로 부터 json을 얻어서 수정폼 출력하고 수정폼을 보이게 한다
+				$.ajax({
+					type:"get",
+					dataType:"json",
+					url:"detailBoard.jsp",
+					data:{"num":num},
+					success:function(data){
+						//수정폼에 데이터를 넣어주기
+						$("#unum").val(data.num);
+						$("#uwriter").val(data.writer);
+						$("#usubject").val(data.subject);
+						$("#ustory").val(data.story);
+						$("#uavata").val(data.avata);
+						
+						//내용보기가 안보이게
+						$("div.detailview").hide();
+						//수정폼 보이게
+						$("div.updateform").show();
+					}
+				})
+			});
+			
 			$(document).on("click", "#btn4", function(){
 				var num = $(this).attr("num");
 				
@@ -128,6 +155,24 @@
 						$("div.list").show();
 					}
 				});
+			});
+			
+			$("#btnupdate").click(function(){
+				var data = $("#updatefrm").serialize();
+				//alert(data);
+				
+				$.ajax({
+					type:"post",
+					url:"updateBoard.jsp",
+					dataType:"html",
+					data:data,
+					success:function(res){
+						list();
+						$("div.updateform").hide();
+						$("div.list").show();
+					}
+				});
+				
 			});
 			
 		});
@@ -230,6 +275,60 @@
 		</table>
 	</form>
 </div>
+
+
+
+<div class="updateform">
+	<form id="updatefrm">
+		
+		<!--num hidden-->
+		<input type="hidden" name="unum" id="unum">
+		<table class="table table-bordered" style="width: 300px;">
+			<caption align="top"><b>게시글수정</b></caption>
+			<tr>
+				<th>작성자</th>
+				<td>
+					<input type="text" id="uwriter" name="uwriter" style="width: 120px;"
+					class="form-control">
+				</td>
+			</tr>
+			
+			<tr>
+				<th>제목</th>
+				<td>
+					<input type="text" id="usubject" name="usubject" style="width: 180px;"
+					class="form-control">
+				</td>
+			</tr>
+			
+			<tr>
+				<th>상태이미지</th>
+				<td>
+					<select id="uavata" name="uavata" class="form-control">
+						<option value="../avata/b1.png">사랑해</option>
+						<option value="../avata/b5.png">배고파</option>
+						<option value="../avata/b7.png">신남</option>
+						<option value="../avata/b8.png">최고</option>
+						<option value="../avata/b6.png">우울</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<textarea style="width: 290px; height: 80px;" id="ustory" name="ustory" class="form-contorl"></textarea>
+				</td>
+			</tr>
+			
+			<tr>
+				<td colspan="2" align="center">
+					<button type="button" class="btn btn-success" id="btnupdate">DB수정</button>
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>
+
+
 
 <div class="detailview"></div>
 </body>
