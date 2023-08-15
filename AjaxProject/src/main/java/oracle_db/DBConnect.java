@@ -31,7 +31,7 @@ public class DBConnect {
 		Connection conn = null;
 
 		try {
-			conn = DriverManager.getConnection(ORACLE_URL, "angel", "a1234");
+			conn = DriverManager.getConnection(ORACLE_URL, "snow", "561378");
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
