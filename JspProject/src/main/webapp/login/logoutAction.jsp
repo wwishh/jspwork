@@ -10,9 +10,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-<button type="button" class="btn btn-info"
-onclick="location.href='member/memberList.jsp'">회원목록</button>
-<button type="button" class="btn btn-info"
-onclick="location.href='login/loginMain.jsp'">로그인</button>
+<%
+  //로그인에 대한 세션값 삭제
+  session.removeAttribute("loginok");
+
+  //메인
+  response.sendRedirect("loginMain.jsp");
+%>
 </body>
 </html>

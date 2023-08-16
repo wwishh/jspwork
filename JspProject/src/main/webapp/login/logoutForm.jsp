@@ -1,3 +1,4 @@
+<%@page import="idx.model.IdxDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,9 +11,21 @@
 <title>Insert title here</title>
 </head>
 <body>
-<button type="button" class="btn btn-info"
-onclick="location.href='member/memberList.jsp'">회원목록</button>
-<button type="button" class="btn btn-info"
-onclick="location.href='login/loginMain.jsp'">로그인</button>
+<%
+  //세션으로 부터 idok
+  String id=(String)session.getAttribute("idok");
+
+   //아이디에 해당하는 이름을 dao로부터 얻는다
+   IdxDao db=new IdxDao();
+   String name=db.getName(id);
+%>
+
+<br><br>
+<b style="color: green;"><%=name %></b>님이 로그인중~~&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="button" value="로그아웃" class="btn btn-danger"
+onclick="location.href='logoutAction.jsp'">
+<br><br>
+<img alt="" src="../logoImg/img1.jpg">
 </body>
 </html>

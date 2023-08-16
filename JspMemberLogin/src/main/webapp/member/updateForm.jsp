@@ -1,5 +1,6 @@
-<%@page import="member.model.memberDto"%>
-<%@page import="member.model.memberDao"%>
+
+<%@page import="member.model.MemberDto"%>
+<%@page import="member.model.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -19,8 +20,8 @@
 
 <%
 	String num = request.getParameter("num");
-	memberDao dao = new memberDao();
-	memberDto dto =  dao.getData(num);
+	MemberDao dao = new MemberDao();
+	MemberDto dto =  dao.getData(num);
 
 %>
 <body>
@@ -66,7 +67,7 @@
 
 				<tr>
 					<td colspan="2" align="center">
-						<button type="submit" class="btn btn-success" id="btnGaip">회원가입</button>
+						<button type="submit" class="btn btn-success" id="btnGaip">정보수정</button>
 						<button type="submit" class="btn btn-warning"
 							onclick="location.href='memberList.jsp'">회원목록</button>
 					</td>

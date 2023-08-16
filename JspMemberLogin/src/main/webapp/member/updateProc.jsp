@@ -1,7 +1,8 @@
+<%@page import="member.model.MemberDto"%>
+<%@page import="member.model.MemberDao"%>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
-<%@page import="member.model.memberDao"%>
-<%@page import="member.model.memberDto"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -28,16 +29,16 @@
 
 	multi = new MultipartRequest(request, realPath, uploadSize, "utf-8", new DefaultFileRenamePolicy());
 
-	memberDao dao = new memberDao();
+	MemberDao dao = new MemberDao();
 
-	memberDto dto = new memberDto();
+	MemberDto dto = new MemberDto();
 
 	dto.setNum(multi.getParameter("num"));
 	dto.setPass(multi.getParameter("pass"));
 	dto.setName(multi.getParameter("name"));
 	dto.setHp(multi.getParameter("hp"));
 
-	memberDto db = dao.getData(multi.getParameter("num"));
+	MemberDto db = dao.getData(multi.getParameter("num"));
 	String newimage = db.getImage();
 	//dto.setImage(multi.getFilesystemName("uploadImage"));
 	String photo = multi.getFilesystemName("uploadImage");

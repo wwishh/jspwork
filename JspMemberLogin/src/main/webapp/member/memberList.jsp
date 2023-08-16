@@ -1,49 +1,33 @@
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="member.model.memberDto"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="member.model.memberDao"%>
+<%@page import="member.model.MemberDto"%>
+<%@page import="java.util.List"%>
+<%@page import="member.model.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<link
-	href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gasoek+One&family=Noto+Sans+KR:wght@500&family=Orbit&display=swap"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300&family=Gaegu:wght@300&family=Gasoek+One&family=Nanum+Pen+Script&family=Noto+Serif+KR:wght@200&display=swap" rel="stylesheet">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-<style>
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-img {
-	border-radius: 100px;
-	border: 2px solid gray;
-}
-=======
->>>>>>> Stashed changes
-	img{
-		border-radius: 100px;
+<title>Insert title here</title>
+<style type="text/css">
+	div.memberlist table{
+		width: 1000px;
 		border: 2px solid gray;
 	}
-<<<<<<< Updated upstream
-=======
->>>>>>> c130fa70b099d2b349ada7129b3d8894cd3f4a3a
->>>>>>> Stashed changes
+	
+	img{
+		width:50px;
+		height: 50px;
+		border: 1px solid black;
+	}
 </style>
-
-
-<title>Insert title here</title>
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-
 
 <script>
 		function funcdel(num) {
@@ -51,7 +35,7 @@ img {
 			$("#myModal").modal();
 			
 			$(document).on("click", "#btnmdel",function(){
-				location.href="deleteMember.jsp?num=" + $(this).attr("num");
+				location.href="../member/deleteForm.jsp?num=" + $(this).attr("num");
 			})
 				
 
@@ -60,109 +44,80 @@ img {
 	
 
 	</script>
-=======
->>>>>>> c130fa70b099d2b349ada7129b3d8894cd3f4a3a
->>>>>>> Stashed changes
+
 </head>
 <%
-memberDao dao = new memberDao();
-ArrayList<memberDto> list = dao.selectMember();
-SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일");
+MemberDao dao=new MemberDao();
+List<MemberDto>list=dao.getMemberList();
+
 %>
 <body>
-	<div>
-<<<<<<< Updated upstream
-		<button type="button"class="btn btn-success btn-sm"
-			id="btnlog" value="login" onclick="location.href='loginMain.jsp'">로그인</button>
-			<button type="button"class="btn btn-info btn-sm"
-=======
-<<<<<<< HEAD
-		<button type="button" class="btn btn-success btn-sm" id="btnlog"
-			value="login" onclick="location.href='loginMain.jsp'">로그인</button>
-		<button type="button" class="btn btn-success btn-sm"
-			onclick="location.href='logoutForm.jsp'">로그아웃</button>
-		<button type="button" class="btn btn-info btn-sm"
-=======
-		<button type="button"class="btn btn-success btn-sm"
-			id="btnlog" value="login" onclick="location.href='loginMain.jsp'">로그인</button>
-			<button type="button"class="btn btn-info btn-sm"
->>>>>>> c130fa70b099d2b349ada7129b3d8894cd3f4a3a
->>>>>>> Stashed changes
-			onclick="location.href='addForm.jsp'">회원가입</button>
 
-	</div>
+<button type="button" class="btn btn-info" onclick="location.href='../login/loginMain.jsp'">로그인</button>
+<button type="button" class="btn btn-info"
+	onclick="location.href='../login/logoutAction.jsp'">로그아웃</button>
+	<table class="table table-bordered">
+<div class="memberlist" style="margin: 30px; 100px;">
+	<b>총 <%=list.size()%> 명의 멤버가 있습니다</b>
+	
 	<br>
-	<table class="table table-bordered" style="width: 1200px;">
-		<tr>
-			<th>번호</th>
-			<th>아이디</th>
-			<th>회원명</th>
-			<th>핸드폰</th>
-			<th>가입일</th>
-			<th>관리</th>
-		</tr>
-		<tr>
-			총 회원수는
-			<%=list.size()%>명입니다
-		</tr>
-		<br>
-		<br>
-
-		<%
-		for (int i = 0; i < list.size(); i++) {
-			memberDto dto = list.get(i);
-		%>
-
-		<tr>
-			<td><%=(i + 1)%></td>
-			<td><%=dto.getId()%></td>
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-			<td><%=dto.getName()%><br> <img src='<%=dto.getImage()%>'
-				width="100px;" height="100px;"></td>
-			<td><%=dto.getHp()%></td>
-			<td><%=sdf.format(dto.getGaip())%></td>
-
-			<%-- <%
-			if(loginok!=null && dto.getId().equlas(id)){
-			%> --%>
-
-			<td><input type="button" class="btn btn-success btn-xs"
-				value="수정"
-				onclick="location.href='updateForm.jsp?num=<%=dto.getNum()%>'">
-				<input type="button" class="btn btn-danger btn-xs" value="삭제"
-				onclick="funcdel(<%=dto.getNum()%>)">
-				 <%-- <%}else{ %>
-				<h5>권한없음</h5>
-				<%} %> --%></td>
-=======
->>>>>>> Stashed changes
-			<td><%=dto.getName()%><br><img src='<%=dto.getImage()%>' width="100px;"
-				height="100px;"></td>
-			<td><%=dto.getHp()%></td>
-			<td><%=sdf.format(dto.getGaip())%></td>
-			<td><input type="button" class="btn btn-success btn-xs"
-				value="수정" onclick="location.href='updateForm.jsp'"
-				?num=<%=dto.getNum()%>> <input type="button"
-				class="btn btn-danger btn-xs" value="삭제"
-				onclick="location.href='deleteForm.jsp'" ?num=<%=dto.getNum()%>></td>
-<<<<<<< Updated upstream
-=======
->>>>>>> c130fa70b099d2b349ada7129b3d8894cd3f4a3a
->>>>>>> Stashed changes
+	
+		<caption><b>전체 회원 명단</b></caption>
+		<tr bgcolor="#ccc">
+			<th width="50">번호</th>
+			<th width="100">아이디</th>
+			<th width="100">회원명</th>
+			<th width="150">핸드폰</th>
+			<th width="150">가입일</th>
+			<th>관리</th>			
 		</tr>
 		<%
-		}
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+		int i=1;
+		for(MemberDto dto:list)
+		{%>
+		  
+			<tr align="center">
+				<td><%=i++%></td>
+				<td><%=dto.getId()%></td>
+				<td>
+						<img  src="<%=dto.getImage()%>"
+							class="img-circle">
+						<b><%=dto.getName()%></b>
+					
+				</td>
+				<td><%=dto.getHp() %></td>
+				
+				<td><%=sdf.format(dto.getGaip()) %></td>
+				<td>
+				
+				<%
+				  /* 로그인한 본인꺼만 수정/삭제 보이도록.... */
+				  String loginok=(String)session.getAttribute("loginok");
+				  String id=(String)session.getAttribute("idok");
+				  
+				  //로그인한 본인꺼만 나오도록
+				  if(loginok!=null && dto.getId().equals(id))
+				  {%>
+					  <button type="button" class="btn btn-info btn-sm"
+					onclick="location.href='../member/updateForm.jsp?num=<%=dto.getNum()%>'">수정</button>
+					
+					<button type="button" class="btn btn-info btn-sm"
+					onclick="funcdel(<%=dto.getNum()%>)">삭제</button>	
+				  <%}else{%>
+					  
+					  <h5>권한없음</h5>
+				  <%}
+				%>
+									
+				</td>
+			</tr>
+		<%}
 		%>
-
 	</table>
+</div>
 
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-	<form action="memberList.jsp">
-		<div class="container">
+<div class="container">
 
 			<!-- Modal -->
 			<div class="modal fade" id="myModal" role="dialog">
@@ -188,12 +143,6 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일");
 			</div>
 
 		</div>
-	</form>
-
-=======
->>>>>>> c130fa70b099d2b349ada7129b3d8894cd3f4a3a
->>>>>>> Stashed changes
-
 
 </body>
 </html>

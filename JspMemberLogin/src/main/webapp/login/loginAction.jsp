@@ -1,4 +1,4 @@
-<%@page import="idx.model.IdxDao"%>
+<%@page import="member.model.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -17,7 +17,7 @@
 	String save=request.getParameter("savechk");
 	
 	//아이디와 비번이 맞는지 확인
-	IdxDao db=new IdxDao();
+	MemberDao db=new MemberDao();
 	boolean flag=db.isLogin(id, pass);
 	
 	//맞으면 세션지정후 로그인메인으로 이동

@@ -10,9 +10,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-<button type="button" class="btn btn-info"
-onclick="location.href='member/memberList.jsp'">회원목록</button>
-<button type="button" class="btn btn-info"
-onclick="location.href='login/loginMain.jsp'">로그인</button>
+<%
+  String loginok=(String)session.getAttribute("loginok");
+
+  if(loginok==null || loginok.equals("")) //로그아웃
+  {%>
+	  <jsp:include page="loginForm.jsp"/>
+  <%}else{  //로그인 %>  
+	  <jsp:include page="../member/memberList.jsp"/>
+  <%}
+%>
 </body>
 </html>
