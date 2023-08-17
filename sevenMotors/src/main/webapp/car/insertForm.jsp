@@ -16,7 +16,7 @@
 
 </head>
 <body>
-	<div style="margin: 50px; 100px;">
+	<div style="margin: 50px 100px;">
 		<form action="insertAction.jsp" method="post"
 			enctype="multipart/form-data" class="form-inline" id="mfrm">
 			<table class="table table-bordered" style="width: 500px;">
