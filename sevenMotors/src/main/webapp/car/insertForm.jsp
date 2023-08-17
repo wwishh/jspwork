@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -16,8 +17,8 @@
 </head>
 <body>
 	<div style="margin: 50px; 100px;">
-		<form action="insertAction.jsp" method="post" enctype="multipart/form-data"
-			class="form-inline" id="mfrm">
+		<form action="insertAction.jsp" method="post"
+			enctype="multipart/form-data" class="form-inline" id="mfrm">
 			<table class="table table-bordered" style="width: 500px;">
 				<caption align="top">
 					<b>견적등록</b>
@@ -44,13 +45,13 @@
 					<td><input type="file" class="form-control"
 						style="width: 250px;" name="uploadImage"></td>
 				</tr>
-				
+
 				<tr>
 					<td style="background-color: #66cdaa" width="120">부품</td>
 					<td><input type="checkbox" name="device" value="엔진오일">엔진오일
-					<input type="checkbox" name="device" value="타이어">타이어
-					<input type="checkbox" name="device" value="엔진">엔진
-					<input type="checkbox" name="device" value="백미러">백미러</td>
+						<input type="checkbox" name="device" value="타이어">타이어 <input
+						type="checkbox" name="device" value="엔진">엔진 <input
+						type="checkbox" name="device" value="백미러">백미러</td>
 				</tr>
 
 				<tr>
@@ -64,6 +65,8 @@
 		</form>
 	</div>
 
+	
+	
 
 </body>
 </html>
