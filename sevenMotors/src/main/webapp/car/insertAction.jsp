@@ -19,8 +19,6 @@
 </head>
 <body>
 
-
-
 <%
 
 
@@ -50,7 +48,7 @@ dto.setDevice(s);
 String photo = multi.getFilesystemName("uploadImage");
 
 if (photo == null)
-	dto.setCimage("../image/noImg.jfif"); //사진이 없는 경우
+	dto.setCimage("../image/noimage.png"); //사진이 없는 경우
 else
 	dto.setCimage("../upload/" + photo); //사진선택한 경로
 
