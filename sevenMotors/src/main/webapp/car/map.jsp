@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Gaegu:wght@700&family=Nanum+Pen+Script&family=Single+Day&display=swap&family=Permanent+Marker&display=swap&family=Do+Hyeon&display=swap" rel="stylesheet"> 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<title>Insert title here</title>
+<title>Seven Motors</title>
 <style>
 #mainMap{
 margin-top: 30px;
@@ -88,7 +88,7 @@ h1{
   
   	<div style="text-align: right; margin-right: 90px; color:gray;">
   	
-  				<input type="checkbox" id="chk1">
+  				<input type="checkbox" id="chk1" checked>
   					<label for="chk1" class="togglebtn">
   						
   					</label>

@@ -9,7 +9,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-<title>Insert title here</title>
+<title>Seven Motors</title>
 <style>
 		.imgbox{
 			width: 100%;
@@ -70,7 +70,7 @@ h1{
   
   	<div style="text-align: right; margin-right: 90px; color:gray;">
   	
-  				<input type="checkbox" id="chk1">
+  				<input type="checkbox" id="chk1" checked>
   					<label for="chk1" class="togglebtn">
   						
   					</label>
