@@ -34,13 +34,28 @@
 	List<QuizBoardDto> list = dao.selectQuiz();
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 	%>
+	
+	<script>
+	/* 테이블 숨기기 */
+	$(document).ready(function() {
+		$('#chk').change(function() {
+	        if ($(this).is(':checked')) {
+	           $("#t").hide();
+	        }
+	        else {
+	        	$("#t").show();
+	        }
+	    });
+	})
+	
+	</script>
 
 	<div>
 		<h2 style="margin: 20px 10px">전체글보기</h2>
 		<br> <b style="margin: 20px 10px"><%=list.size()%>개의 글</b>
 		<button type="button" class="btn btn-outline-info btn-sm" onclick="location.href='quizform.jsp'">글쓰기</button>
 		<div style="float: right; margin-right: 40px">
-			<input type="checkbox">&nbsp;공지숨기기&nbsp;&nbsp;| <i
+			<input type="checkbox" name="chk" id="chk">&nbsp;공지숨기기&nbsp;&nbsp;| <i
 				class="bi bi-grid-fill" style="cursor: pointer"
 				onclick="location.href='quizimagelist.jsp'"></i>&nbsp;&nbsp; <i
 				class="bi bi-card-text" style="cursor: pointer"
@@ -49,7 +64,7 @@
 	<hr class="myhr">
 	</div>
 	
-	<table class="table table-striped" style="width:900px">
+	<table class="table table-striped" style="width:900px" id="t">
 	<tr style="text-align:center">
 	<th>번호</th>
 	<th>작성자</th>

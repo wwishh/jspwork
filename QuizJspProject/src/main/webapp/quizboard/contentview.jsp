@@ -24,11 +24,12 @@
 	String num = request.getParameter("num");
 	QuizBoardDao dao = new QuizBoardDao();
 	QuizBoardDto dto = dao.getData(num);
+	dao.plusQuiz(num);
 	%>
 	<div>
 		<h3>제목 : <%=dto.getTitle() %></h3>
 		<h3>내용 : <%=dto.getContent()%></h3>
-		<button type="button" class="btn btn-outline-warning" onclick="history.back()"><i class="bi bi-arrow-left-square-fill">뒤로가기</i></button>
+		<button type="button" class="btn btn-outline-warning" onclick="location.href='quizlist.jsp'"><i class="bi bi-arrow-left-square-fill">뒤로가기</i></button>
 	</div>
 </body>
 </html>

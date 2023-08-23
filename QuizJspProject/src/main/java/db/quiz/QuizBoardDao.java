@@ -102,4 +102,22 @@ public class QuizBoardDao {
 		return dto;
 	}
 	
+	public void plusQuiz(String num) {
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		
+		String sql = "update quizboard set readcount=readcount+1 where q_num=?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, num);
+			pstmt.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(pstmt, conn);
+		}
+	}
+	
 }
